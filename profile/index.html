@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taman Margasatwa Ragunan</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="media.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="navbar-toggle"></div>
+            <span class="navbar-logo logo-large">Ragunan Zoo</span>
+            <!-- <span class="navbar-logo logo-mark">KF</span> -->
+            <ul class="navbar-group">
+              <a href="./dashboard/dashboard.html">
+                <li class="navbar-item">Beranda</li>
+              </a>
+              <li class="navbar-item">
+                Animals
+                <ul class="navbar-down">
+                <a href="https://">
+                    <li class="navbar-item">Mammals</li>
+                </a>
+                <a href="http://">
+                  <li class="navbar-item">Birds</li>
+                </a>
+                <a href="http://">
+                  <li class="navbar-item">Reptiles</li>
+                </a>
+                </ul>
+              </li>
+              <li class="navbar-item">
+                Tickets
+                <ul class="navbar-down">
+                <a href="https://">
+                  <li class="navbar-item">Regular</li>
+                </a>
+                <a href="http://">
+                  <li class="navbar-item">Group</li>
+                </a>
+                <a href="http://">
+                  <li class="navbar-item">Special</li>
+                </a>
+                </ul>
+              </li>
+              <li class="navbar-item">About</li>
+              <li class="navbar-item">Contact</li>
+            </ul>
+            <div class="navbar-action">
+              <a href="login.php"><button>Login</button></a>
+              <a href="register.php"><button>Register</button></a>
+            </div>
+          </nav>
+      </header>
+
+    <section class="hero">
+        <div class="header-carousel">
+            <div class="header-carousel-item active" style="background-image: url('https://ragunanzoo.jakarta.go.id/wp-content/uploads/2014/12/image-slidder-13.jpg');">
+                <div class="header-carousel-content">
+                    <h2 class="header-title">Plan your trip with <strong>Tour</strong></h2>
+                    <p class="header-description">Take the unique chance to get the most unforgettable experience. These are the emotions you will never forget.</p>
+                    <a href="#" class="btn btn-primary-travel">Learn More</a>
+                </div>
+            </div>
+            <div class="header-carousel-item" style="background-image: url('https://ragunanzoo.jakarta.go.id/wp-content/uploads/2014/11/slide_2.jpg');">
+                <div class="header-carousel-content">
+                    <h2 class="header-title">Learn new things by traveling the World</h2>
+                    <p class="header-description">Let's travel the world with pleasure to know new and interesting things you can learn and you can</p>
+                    <a href="#" class="btn btn-primary-travel">Learn More</a>
+                </div>
+            </div>
+            <div class="header-carousel-item" style="background-image: url('https://ragunanzoo.jakarta.go.id/wp-content/uploads/2014/11/slide_4.jpg');">
+                <div class="header-carousel-content">
+                    <h2 class="header-title">It's a Big World out there, Go Explore</h2>
+                    <p class="header-description">We always make our customer happy by providing as many choises as possible</p>
+                    <a href="#" class="btn btn-primary-travel">Learn More</a>
+                </div>
+            </div>
+            <div class="header-carousel-item" style="background-image: url('https://ragunanzoo.jakarta.go.id/wp-content/uploads/2014/11/slide_31.jpg');">
+                <div class="header-carousel-content">
+                    <h2 class="header-title">Enjoy the World!</h2>
+                    <p class="header-description">Our travel agents are experts at handcrafting and coordinating complex itineraries around the world!</p>
+                    <a href="#" class="btn btn-primary-travel">Learn More</a>
+                    <button class="prev" onclick="changeSlide(-1)">
+                        <i class="fas fa-chevron-left">
+                        </i>
+                    </button>
+                    <button class="next" onclick="changeSlide(1)">
+                        <i class="fas fa-chevron-right">
+                        </i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="latest-news">
+        <div class="latest-news-title">
+            <h2>Latest News</h2>
+            <p>Check out our latest news and events</p>
+            <br>
+        </div>
+        <div class="latest-news-content">
+            <div class="latest-news-image">
+                <img src="./images/header3.jpg" alt="Latest News Image">
+            </div>
+            <div class="latest-news-text">
+                <h2>Exciting New Exhibit Opening Soon!</h2>
+                <p>We're thrilled to announce the opening of our brand new exhibit featuring a variety of exotic animals. Get ready for an amazing experience!</p>
+                <a href="#" class="cta-button">Learn More</a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="latest-news-content">
+            <div class="latest-news-image">
+                <img src="./images/header1.jpg" alt="Latest News Image">
+            </div>
+            <div class="latest-news-text">
+                <h2>Exciting New Exhibit Opening Soon!</h2>
+                <p>We're thrilled to announce the opening of our brand new exhibit featuring a variety of exotic animals. Get ready for an amazing experience!</p>
+                <a href="#" class="cta-button">Learn More</a>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="latest-news-content">
+            <div class="latest-news-image">
+                <img src="./images/header4.jpg" alt="Latest News Image">
+            </div>
+            <div class="latest-news-text">
+                <h2>Exciting New Exhibit Opening Soon!</h2>
+                <p>We're thrilled to announce the opening of our brand new exhibit featuring a variety of exotic animals. Get ready for an amazing experience!</p>
+                <a href="#" class="cta-button">Learn More</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="info-section">
+        <div class="info-cards">
+            <div class="info-card">
+                <img src="./images/icon-plane-ticket.png" alt="Ticket Icon">
+                <h3>Ticket Information</h3>
+                <p>Find the best tickets for your visit</p>
+            </div>
+            <div class="info-card">
+                <img src="./images/icon-traveller.png" alt="Schedule Icon">
+                <h3>Feeding Schedule</h3>
+                <p>Check when our animals eat</p>
+            </div>
+            <div class="info-card">
+                <img src="./images/icon-globe.png" alt="Map Icon">
+                <h3>Zoo Map</h3>
+                <p>Navigate our facilities easily</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="company-info">
+                    <h2>Ragunan Zoo</h2>
+                    <h3>Hubungi Kami</h3>
+                    <div class="contact-info">
+                        <p>ragunancompany@gmail.com</p>
+                        <p>Palu, Sulawesi Tengah</p>
+                        <p>Indonesia</p>
+                    </div>
+                </div>
+
+                <!-- Categories -->
+                <div class="footer-section">
+                    <h3>Informasi Tiket</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Regular</a></li>
+                        <li><a href="#">Group</a></li>
+                        <li><a href="#">Special</a></li>
+                    </ul>
+                </div>
+
+                <!-- Links -->
+                <div class="footer-section">
+                    <h3>Informasi Lainnya</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Beranda</a></li>
+                        <li><a href="#">Tentang Kami</a></li>
+                        <li><a href="#">Clients</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Social Media -->
+                 <div class="footer-section">
+                    <div class="social-links">
+                        <!-- Instagram -->
+                        <a href="https://www.instagram.com/vianz231" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>Instagram</title>
+                                <path d="M12 0C8.74 0 8.333.015 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.74 0 12s.015 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126.667.666 1.336 1.079 2.126 1.384.766.296 1.636.499 2.913.558C8.333 23.988 8.74 24 12 24s3.667-.015 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384.666-.667 1.079-1.335 1.384-2.126.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.015-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126C21.319 1.347 20.651.935 19.86.63c-.765-.297-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0zm0 2.16c3.203 0 3.585.016 4.85.071 1.17.055 1.805.249 2.227.415.562.217.96.477 1.382.896.419.42.679.819.896 1.381.164.422.36 1.057.413 2.227.057 1.266.07 1.646.07 4.85s-.015 3.585-.074 4.85c-.061 1.17-.256 1.805-.421 2.227-.224.562-.479.96-.899 1.382-.419.419-.824.679-1.38.896-.42.164-1.065.36-2.235.413-1.274.057-1.649.07-4.859.07-3.211 0-3.586-.015-4.859-.074-1.171-.061-1.816-.256-2.236-.421-.569-.224-.96-.479-1.379-.899-.421-.419-.69-.824-.9-1.38-.165-.42-.359-1.065-.42-2.235-.045-1.26-.061-1.649-.061-4.844 0-3.196.016-3.586.061-4.861.061-1.17.255-1.814.42-2.234.21-.57.479-.96.9-1.381.419-.419.81-.689 1.379-.898.42-.166 1.051-.361 2.221-.421 1.275-.045 1.65-.06 4.859-.06l.045.03zm0 3.678c-3.405 0-6.162 2.76-6.162 6.162 0 3.405 2.76 6.162 6.162 6.162 3.405 0 6.162-2.76 6.162-6.162 0-3.405-2.76-6.162-6.162-6.162zM12 16c-2.21 0-4-1.79-4-4s1.79-4 4-4 4 1.79 4 4-1.79 4-4 4zm7.846-10.405c0 .795-.646 1.44-1.44 1.44-.795 0-1.44-.646-1.44-1.44 0-.794.646-1.439 1.44-1.439.793-.001 1.44.645 1.44 1.439z"/>
+                            </svg>
+                        </a>
+
+                        <!-- Github -->
+                        <a href="https://github.com/piahn" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>GitHub</title>
+                                <path d="M12 0C5.373 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.608-4.042-1.608-.546-1.386-1.333-1.756-1.333-1.756-1.09-.745.083-.73.083-.73 1.205.085 1.839 1.236 1.839 1.236 1.07 1.834 2.809 1.305 3.495.998.108-.775.418-1.305.762-1.606-2.665-.304-5.466-1.334-5.466-5.931 0-1.31.468-2.381 1.236-3.221-.124-.303-.536-1.523.117-3.176 0 0 1.008-.322 3.301 1.23.956-.266 1.98-.398 3-.403 1.02.005 2.044.137 3 .403 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.241 2.873.118 3.176.77.84 1.236 1.911 1.236 3.221 0 4.609-2.803 5.625-5.475 5.921.43.371.814 1.102.814 2.222 0 1.604-.015 2.896-.015 3.286 0 .32.192.694.801.576C20.565 21.796 24 17.298 24 12c0-6.627-5.373-12-12-12"/>
+                            </svg>
+                        </a>
+
+                        <!-- TikTok -->
+                        <a href="https://tiktok.com/@sandhika.galih" target="_blank">
+                            <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <title>TikTok</title>
+                                <path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>
+                    Dibuat dengan <span class="heart">❤</span> oleh 
+                    <a href="#">Vianzz VCP</a>, menggunakan 
+                    <a href="#">CSS and JS</a>
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const navItem = document.querySelectorAll(".navbar-group > .navbar-item");
+
+      navItem.forEach((nav) => {
+        const navDown = nav.querySelector(".navbar-down");
+        if (navDown) {
+          nav.addEventListener("mouseenter", () => {
+            navDown.classList.add("navbar-expand");
+          });
+          nav.addEventListener("mouseleave", () => {
+            navDown.classList.remove("navbar-expand");
+          });
+        }
+      });
+
+      const menuToggle = document.querySelector(".navbar-toggle");
+
+      menuToggle.addEventListener("click", (e) => {
+        document
+          .querySelector(".navbar-group")
+          .classList.toggle("navbar-expand");
+
+        document
+          .querySelector(".navbar-action")
+          .classList.toggle("navbar-expand");
+
+        e.target.classList.toggle("navbar-expand");
+      });
+
+        // Header Carousel
+        const headerCarousel = document.querySelectorAll('.header-carousel-item');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            headerCarousel.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % headerCarousel.length;
+                showSlide(currentIndex);
+        }
+
+        setInterval(nextSlide, 5000);
+
+         // Animated Background
+        //  const animatedBg = document.querySelector('.header-carousel-item');
+        // const bgImages = [
+        //     'https://ragunanzoo.jakarta.go.id/wp-content/uploads/2014/12/image-slidder-13.jpg',
+        //     'https://ragunanzoo.jakarta.go.id/wp-content/uploads/2014/11/slide_2.jpg',
+        //     'https://ragunanzoo.jakarta.go.id/wp-content/uploads/2014/11/slide_4.jpg',
+        //     'https://ragunanzoo.jakarta.go.id/wp-content/uploads/2014/11/slide_31.jpg'
+        //     // '/api/placeholder/1920/1080'
+        // ];
+
+        // function changeBg() {
+        //     const randomIndex = Math.floor(Math.random() * bgImages.length);
+        //     animatedBg.style.backgroundImage = `url(${bgImages[randomIndex]})`;
+        // }
+
+        // setInterval(changeBg, 1000);
+
+        // animatedBg.addEventListener('click', changeBg);
+
+        // JavaScript untuk menambahkan interaktivitas jika diperlukan
+        document.addEventListener('DOMContentLoaded', function() {
+            // Contoh: Menambahkan smooth scroll untuk link internal
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

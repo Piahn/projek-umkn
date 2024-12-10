@@ -1,0 +1,228 @@
+<div class="charts-container-center">
+    <div class="chart-card">
+        <h1><center>Revenue News</center></h1>
+        <p><center>Berikut merupakan daftar berita</center></p>
+    </div>
+</div>
+
+<?php
+// Database Connection and Validation Functions
+function validateInput($data) {
+    // Trim whitespace
+    $data = trim($data);
+    // Remove backslashes
+    $data = stripslashes($data);
+    // Convert special characters to HTML entities
+    $data = htmlspecialchars($data);
+    return $data;
+}
+
+function validateEmail($email) {
+    // Remove illegal characters
+    $email = filter_var($email, FILTER_SANITIZE_EMAIL);
+    
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return false;
+    }
+    
+    return $email;
+}
+
+function validatePassword($password) {
+    // Password requirements
+    // At least 8 characters, 
+    // Contains at least one uppercase, one lowercase, one number
+    $password_pattern = "/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/";
+    
+    if (!preg_match($password_pattern, $password)) {
+        return false;
+    }
+    
+    return true;
+}
+
+function validateUsername($username) {
+    // Username must be alphanumeric and between 3-50 characters
+    if (!preg_match("/^[a-zA-Z0-9 ]{3,50}$/", $username)) {
+        return false;
+    }
+    
+    return true;
+}
+
+function checkEmailExists($koneksi, $email) {
+    // Check if email already exists in both admin and user tables
+    $email = mysqli_real_escape_string($koneksi, $email);
+    
+    $admin_check = mysqli_query($koneksi, "SELECT * FROM tbl_admin WHERE email = '$email'");
+    $user_check = mysqli_query($koneksi, "SELECT * FROM tbl_user WHERE email = '$email'");
+    
+    if (mysqli_num_rows($admin_check) > 0 || mysqli_num_rows($user_check) > 0) {
+        return true; // Email already exists
+    }
+    
+    return false;
+}
+
+// Improved Validation and Insertion Process
+if(isset($_POST['submit'])) {
+    // Initialize error array
+    $errors = [];
+    
+    // Validate and sanitize inputs
+    $name = validateInput($_POST['nama']);
+    $email = validateEmail($_POST['email']);
+    $password = $_POST['password'];
+    $role = $_POST['role'];
+    
+    // Perform comprehensive validation
+    if (empty($name)) {
+        $errors[] = "Nama tidak boleh kosong";
+    } elseif (!validateUsername($name)) {
+        $errors[] = "Nama hanya boleh berisi huruf, angka, dan spasi (3-50 karakter)";
+    }
+    
+    if (empty($email)) {
+        $errors[] = "Email tidak valid";
+    } elseif (checkEmailExists($koneksi, $email)) {
+        $errors[] = "Email sudah terdaftar";
+    }
+    
+    if (empty($password)) {
+        $errors[] = "Password tidak boleh kosong";
+    } elseif (!validatePassword($password)) {
+        $errors[] = "Password harus minimal 8 karakter dan mengandung huruf besar, huruf kecil, dan angka";
+    }
+    
+    if ($role == '0') {
+        $errors[] = "Pilih role dengan benar";
+    }
+    
+    // If no errors, proceed with database insertion
+    if (empty($errors)) {
+        // Hash password securely (replace md5 with password_hash)
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+        
+        // Prepare statement to prevent SQL injection
+        if($role == 1) {
+            $stmt = mysqli_prepare($koneksi, "INSERT INTO tbl_admin (username, email, password, admin_status) VALUES (?, ?, ?, 'aktif')");
+            mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hashed_password);
+        } else {
+            $stmt = mysqli_prepare($koneksi, "INSERT INTO tbl_user (username, email, password, user_status) VALUES (?, ?, ?, 'aktif')");
+            mysqli_stmt_bind_param($stmt, "sss", $name, $email, $hashed_password);
+        }
+        
+        // Execute prepared statement
+        if(mysqli_stmt_execute($stmt)) {
+            echo "<script>alert('Data berhasil disimpan'); window.location = 'dashboard.php?page=user';</script>";
+        } else {
+            echo "<script>alert('Data gagal disimpan: " . mysqli_error($koneksi) . "'); window.location = 'dashboard.php?page=tambah_user';</script>";
+        }
+        
+        mysqli_stmt_close($stmt);
+    } else {
+        // Display validation errors
+        $error_message = implode("\\n", $errors);
+        echo "<script>alert('$error_message');</script>";
+    }
+}
+?>
+
+<div style="charts-container-center margin-top: 20px;">
+    <div style="display: grid; padding: 20px;">
+        <div style="width: 100%;">
+            <div style="border: 1px solid #ddd; border-radius: 10px;">
+                <div style="background: white; padding: 15px; border-bottom: 1px solid #ddd;">
+                    <h5 style="margin: 0; font-size: 1.25rem;">Tambah User</h5>
+                </div>
+                <div style="padding: 15px;">
+                    <form action="" method="post" id="userForm" onsubmit="return validateForm()">
+                        <div style="margin-bottom: 15px;">
+                            <label for="nama" style="display: block; margin-bottom: 5px;">Nama</label>
+                            <input type="text" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" id="nama" name="nama" required>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label for="email" style="display: block; margin-bottom: 5px;">Email</label>
+                            <input type="email" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" id="email" name="email" required>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label for="password" style="display: block; margin-bottom: 5px;">Password</label>
+                            <input type="password" style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" id="password" name="password" required>
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <label style="display: block; margin-bottom: 5px;">Role</label>
+                            <select style="width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px;" id="role" name="role" required>
+                                <option value="0">-- Pilih Role --</option>
+                                <option value="1">Admin</option>
+                                <option value="2">User</option>
+                            </select>
+                        </div>
+                        <button type="submit" name="submit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer;">Tambah</button>
+                    </form>
+                    <!-- <?php 
+                    if(isset($_POST['submit'])) {
+                        $name = $_POST['nama'];
+                        $email = $_POST['email'];
+                        $password = md5($_POST['password']);
+                        $role = $_POST['role'];
+                        if($role == 1) {
+                            $query = mysqli_query($koneksi, "INSERT INTO tbl_admin (username, email, password, admin_status) VALUES ('$name', '$email', '$password', 'aktif')");
+                        } else {
+                            $query = mysqli_query($koneksi, "INSERT INTO tbl_user (username, email, password, user_status) VALUES ('$name', '$email', '$password', 'aktif')");
+                        }
+                        if($query) {
+                            echo "<script>alert('Data berhasil disimpan'); window.location = 'dashboard.php?page=user';</script>";
+                        } else {
+                            echo "<script>alert('Data gagal disimpan'); window.location = 'dashboard.php?page=tambah_user';</script>";
+                        }
+                    }
+                    ?> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function validateForm() {
+        // Client-side validation
+        var name = document.getElementById('nama').value;
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var role = document.getElementById('role').value;
+        
+        var errors = [];
+        
+        // Name validation
+        if (name.trim() === '') {
+            errors.push('Nama tidak boleh kosong');
+        }
+        
+        // Email validation
+        var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            errors.push('Email tidak valid');
+        }
+        
+        // Password validation
+        var passwordPattern = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/;
+        if (!passwordPattern.test(password)) {
+            errors.push('Password harus minimal 8 karakter dan mengandung huruf besar, huruf kecil, dan angka');
+        }
+        
+        // Role validation
+        if (role === '0') {
+            errors.push('Pilih role dengan benar');
+        }
+        
+        // Display errors or submit form
+        if (errors.length > 0) {
+            alert(errors.join('\n'));
+            return false;
+        }
+        
+        return true;
+    }
+    </script>
+
+
