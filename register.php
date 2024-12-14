@@ -140,11 +140,15 @@
 <body>
     <div class="register-container">
         <h2 class="register-title">Create an Account</h2>
-        <form>
+        <form action="cekregister.php" method="post">
             <div class="name-group">
             <div class="input-group">
                 <input type="email" name="email" placeholder=" " required>
                 <label>Email Address</label>
+            </div><br>
+            <div class="input-group">
+                <input type="text" name="username" placeholder=" " required>
+                <label>Username</label>
             </div><br>
             <div class="input-group">
                 <input type="password" name="password" placeholder=" " required>
@@ -161,6 +165,22 @@
             </div>
             <button class="register-btn" type="submit"><a href="index.php">Sign Up</button>
         </form>
+        <?php 
+            if(isset($_POST['submit'])) {
+                $username = $_POST['username'];
+                $password = $_POST['password'];
+                $password_require = $_POST['password_require'];
+                $email = $_POST['email'];
+
+                mysqli_query($koneksi, "INSERT * FROM tbl_user" ('username', 'password', 'email') VALUES ('$password', $username, $email) )
+                if($password == $password_require) {
+                    echo "<script>alert('pendaftaran telah berhasil'); window.location = 'index.php';</script>";
+                } else {
+                    echo "<script>alert('pendaftaran gagal'); window.location = 'register.php';</script>";
+                }
+
+            }  
+            ?>
         <div class="login-link">
             Already have an account? <a href="index.php">Login</a>
         </div>

@@ -8,7 +8,7 @@
                     $jumlah_uang = mysqli_fetch_array($sql_uang);
                     ?>
                     <h4>Saldo</h4>
-                    <h2>$ <?php echo $jumlah_uang['uang']; ?></h2>
+                    <h2>Rp <?php echo $jumlah_uang['uang']; ?></h2>
                     <small>+8.2% from last month</small>
                 </div>
                 <div class="card-icon">

@@ -15,12 +15,12 @@ $total_results = mysqli_num_rows($result);
 <div class="dashboard-grid">
     <div class="dashboard-card">
         <div class="card-content">
-            <h4>Total Produk</h4>
+            <h4>Total Pesanan</h4>
             <?php
-                $sql_produk = mysqli_query($koneksi, "SELECT * FROM tbl_produk");
-                $jumlah_produk = mysqli_num_rows($sql_produk);
+                $sql = mysqli_query($koneksi, "SELECT * FROM tbl_pesanan, tbl_user, tbl_produk WHERE tbl_pesanan.id_user_pesanan = tbl_user.id_user AND tbl_pesanan.id_produk_pesanan = tbl_produk.id_produk");
+                $jumlah_pesanan = mysqli_num_rows($sql);
             ?>
-            <h2><?php echo $jumlah_produk; ?></h2>
+            <h2><?php echo $jumlah_pesanan; ?></h2>
         </div>
         <div class="card-icon">
             <i class='bx bx-package'></i>
