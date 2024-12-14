@@ -55,7 +55,7 @@
 
 <div class="container">
   <h2>Pengaturan Akun</h2><br>
-  <form class="account-form">
+  <form class="account-form" action="" method="post">
     <div class="form-group">
       <label for="username">Username:</label>
       <input type="text" id="username" name="username" placeholder="Enter your username" required>
@@ -72,6 +72,23 @@
       <label for="confirm-password">Confirm Password:</label>
       <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm your password" required>
     </div>
-    <button type="submit" class="update-button">Update</button>
+    <button type="submit" name="submit" class="update-button">Update</button>
   </form>
+  <?php 
+  if(isset($_POST['submit'])) {
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+    $conf_pass = $_POST['confirm-password'];
+    $id_user = $_SESSION['id_admin'];
+
+    if($password ==$conf_pass) {
+      $password_5 = md5($password);
+      mysqli_query($koneksi, "UPDATE tbl_admin SET username='$username', password='$password_5' WHERE id_admin='$id_user'");
+      echo "<script>alert('Berhasil di ubah'); window.location = 'dashboard.php?page=profile'</script>";
+    } else {
+      echo "<script>alert('Password Salah/Tidak sama') window.location = 'dashboard.php?page=profile'</script>";
+    }
+  }
+  
+  ?>
 </div>
